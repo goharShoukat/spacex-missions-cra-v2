@@ -1,11 +1,11 @@
-import './App.css';
 import React from 'react'
 import ThemeProvider from './ThemeWrapper'
+import logo from './assets/logo.jpg'
 function App() {
   return (
     <ThemeProvider>
       <div>
-        Testing
+        <img src = {logo} alt = 'logo' />
       </div>
     </ThemeProvider>
   );
