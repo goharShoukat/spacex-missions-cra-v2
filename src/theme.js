@@ -1,8 +1,11 @@
 import React from 'react'
-import { createTheme } from '@mui/material/styles'
+import { createTheme} from '@mui/material/styles'
+
+export const SMALL_SPACING = '1rem'
+export const SPACING = '2rem'
 
 export const colors = {
-    primaryColor: '#e3f2fd',
+    primaryColor: '#005288',
     secondaryColor: '#A7A9AC',
     primaryText: '#565656',
     secondaryText: '#efefef',
@@ -13,6 +16,6 @@ export const colors = {
     darkGray: '#171717',
     lightGray: '#efefef'
 }
-
-const theme = createTheme()
-export default theme
+//what would happen if the curly baces are not put in here
+const SpaceXTheme = createTheme({})
+export default SpaceXTheme
