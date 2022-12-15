@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledPrimaryButton, StyledSecondaryButton } from './'
+import { StyledPrimaryButton, StyledSecondaryButton, StyledSmallButton } from './'
 
 export const Button = (props) => {
     if (props.buttonStyle === 'primary') {
@@ -18,6 +18,14 @@ export const Button = (props) => {
                     {props.label}
                 </StyledSecondaryButton>
             </div>
+        )
+    }
+
+    else if (props.size === 'small'){
+        return (
+            <StyledSmallButton>
+                {props.label}
+            </StyledSmallButton>
         )
     }
 }

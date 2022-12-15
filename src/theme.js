@@ -14,7 +14,9 @@ export const colors = {
     black: '#000000',
     white: '#FFFFFF',
     darkGray: '#171717',
-    lightGray: '#efefef'
+    lightGray: '#efefef',
+    gray: '#888888',
+    transparent: 'transparent',
 }
 //what would happen if the curly baces are not put in here
 const SpaceXTheme = createTheme({})

@@ -1,18 +1,24 @@
 import React from 'react'
 import ThemeProvider from './ThemeWrapper'
 import logo from './assets/logo.jpg'
-import { Button } from './components'
+import { Button, Header } from './components'
 import './App.css';
-
+//<img src={logo} alt='logo' />
 function App() {
   return (
     <ThemeProvider>
-      <div className='App'>
-        <img src={logo} alt='logo' />
-        <h1>Missions</h1>
-        <Button buttonStyle='primary' label='Launches' />
-        <Button buttonStyle='secondary' label='History' />
-      </div>
+    <Header />
+      <header className = "App-header">
+        <div className="App">
+          <img      alt = "logo" />
+          <h1>Missions</h1>
+            <div>
+              <Button label ='SpaceX' buttonStyle = "primary" />
+              <Button label = "SpaceX" buttonStyle = "secondary" />
+            </div>
+          </div>
+      </header>
+      
     </ThemeProvider>
   );
 }

@@ -28,6 +28,19 @@ export const StyledPrimaryButton = styled(StyledMaterialButton)`
 
 export const StyledSecondaryButton = styled(StyledMaterialButton)`
  color: ${colors.black};
- border-color: ${colors.white}
+ border-color: ${colors.white};
+ background-color: ${colors.white};
+ `
+
+ export const StyledSmallButton = styled(StyledMaterialButton)`
+ color: ${colors.white};
  background-color: ${colors.black};
+ border-color: ${colors.transparent};
+ min-width: 90px;
+ height: 30px;
+
+ &:hover {
+    background-color: ${colors.transparent};
+    border-bottom: 3px solid ${colors.white};
+ }
  `
