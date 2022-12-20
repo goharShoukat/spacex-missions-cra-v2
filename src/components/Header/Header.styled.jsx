@@ -22,5 +22,5 @@ export const StyledHeaderMenu = styled(Box)`
     display: flex;
     align-items: center;
     padding: 5px ${SMALL_SPACING};
-    margin-right: ${SMALL_SPACING}
+    margin-right: ${SMALL_SPACING};
 `
