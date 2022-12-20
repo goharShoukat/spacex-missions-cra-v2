@@ -4,23 +4,27 @@ import logo from './assets/logo.jpg'
 import { Button, Header } from './components'
 import { Provider } from 'react-redux'
 import store from './store'
-import './App.css';
-//<img src={logo} alt='logo' />
+
+import { Layout } from './components'
+import { Home } from './compositions'
+
+import { StyledAppContainer } from './App.styled'
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 function App() {
   return (
     <ThemeProvider>
       <Provider store={store} >
-        <Header />
-        <header className="App-header">
-          <div className="App">
-            <img alt="logo" />
-            <h1>Missions</h1>
-            <div>
-              <Button label='SpaceX' buttonStyle="primary" />
-              <Button label="SpaceX" buttonStyle="secondary" />
-            </div>
-          </div>
-        </header>
+        <StyledAppContainer>
+          <Layout>
+            <Router>
+              <Routes>
+                <Route path = '/' element = {<Home />} />
+              </Routes>
+            </Router>
+          </Layout>
+        </StyledAppContainer>
       </Provider>
     </ThemeProvider>
   );

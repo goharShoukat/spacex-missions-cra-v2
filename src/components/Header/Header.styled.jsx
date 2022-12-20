@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import styled from 'styled-components';
-import {colors, SPACING, SMALL_SPACING} from '../../theme'
+import { colors, SPACING, SMALL_SPACING, MAX_WIDTH } from '../../theme'
 
 export const StyledHeaderContainer = styled(Box)`
     background-color: ${colors.black};
@@ -9,6 +9,7 @@ export const StyledHeaderContainer = styled(Box)`
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    max-width: ${MAX_WIDTH};
     z-index: 5;
     padding: 5px ${SPACING};
 `

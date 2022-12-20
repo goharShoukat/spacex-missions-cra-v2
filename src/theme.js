@@ -3,7 +3,7 @@ import { createTheme} from '@mui/material/styles'
 
 export const SMALL_SPACING = '1rem'
 export const SPACING = '2rem'
-
+export const MAX_WIDTH = '986px'
 export const colors = {
     primaryColor: '#005288',
     secondaryColor: '#A7A9AC',

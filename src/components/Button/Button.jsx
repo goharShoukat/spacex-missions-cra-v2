@@ -5,7 +5,7 @@ export const Button = (props) => {
     if (props.buttonStyle === 'primary') {
         return (
             <div>
-                <StyledPrimaryButton>
+                <StyledPrimaryButton href = {props.href}>
                     {props.label}
                 </StyledPrimaryButton>
             </div>
@@ -14,7 +14,7 @@ export const Button = (props) => {
     else if (props.buttonStyle === 'secondary') {
         return (
             <div>
-                <StyledSecondaryButton>
+                <StyledSecondaryButton href = {props.href}>
                     {props.label}
                 </StyledSecondaryButton>
             </div>
@@ -23,7 +23,7 @@ export const Button = (props) => {
 
     else if (props.size === 'small'){
         return (
-            <StyledSmallButton>
+            <StyledSmallButton href = {props.href}>
                 {props.label}
             </StyledSmallButton>
         )
