@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 
 import { Layout } from './components'
-import { Home, History } from './compositions'
+import { Home, History, Launches } from './compositions'
 
 import { StyledAppContainer } from './App.styled'
 
@@ -22,6 +22,7 @@ function App() {
               <Routes>
                 <Route path = '/' element = {<Home />} />
                 <Route path = '/history' element = {<History />} />
+                <Route path = '/launches' element = {<Launches />} />
               </Routes>
             </Router>
           </Layout>
