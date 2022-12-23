@@ -1,3 +1,5 @@
+import { getAllHistory } from '../../api'
+
 const LAUNCH_HISTORY_REQUESTED = 'LAUNCH_HISTORY_REQUESTED'
 const LAUNCH_HISTORY_RECEIVED = 'LAUNCH_HISTORY_RECEIVED'
 
@@ -14,23 +16,35 @@ export const LaunchHistoryReceivedAction = (payload) => {
 
 const initialState = {
     loading: false,
-    launches: null
+    launchHistory: null
 }
 
 export default function HistoryReducer(state = initialState, action) {
     switch (action.type) {
         case LAUNCH_HISTORY_REQUESTED:
             return {
+                ...state,
                 loading: true,
-                ...state
             }
         case LAUNCH_HISTORY_RECEIVED:
             return {
+                ...state,
                 loading: false,
-                launches: action.payload,
-                ...state
+                launchHistory: action.payload,
             }
         default:
             return state
+    }
+}
+
+
+export const fetchAllHistoryDate = () => {
+    return function (dispatch) {
+        dispatch(LaunchHistoryRequestAction)
+        getAllHistory
+            .then(response => {
+                dispatch(LaunchHistoryReceivedAction(response))
+            })
+            .catch(err => console.log(err))
     }
 }

@@ -17,6 +17,6 @@ Setup primitive compisitions for history and launches, and hook them to the rout
 
  ## TASK 3
  Display data from the SpaceX history endpoint
-  - Events date
-  - Description
-  - Link for further information
+  - Setup history store 
+  - Create historycard component
+  - Display response on /history page
