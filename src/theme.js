@@ -1,6 +1,8 @@
 import React from 'react'
 import { createTheme} from '@mui/material/styles'
 
+export const BORDER_RADIUS = '0.2rem'
+
 export const SMALL_SPACING = '1rem'
 export const SPACING = '2rem'
 export const MAX_WIDTH = '986px'

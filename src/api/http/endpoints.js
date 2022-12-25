@@ -2,6 +2,5 @@ import { axiosInstance } from './'
 
 const history = '/history'
 
-export const getAllHistory = () => {
+export const getAllHistory = () => 
     axiosInstance.get(history)
-}

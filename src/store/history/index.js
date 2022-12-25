@@ -38,13 +38,12 @@ export default function HistoryReducer(state = initialState, action) {
 }
 
 
-export const fetchAllHistoryDate = () => {
+export const fetchAllHistoryData = () => {
     return function (dispatch) {
         dispatch(LaunchHistoryRequestAction)
-        getAllHistory
-            .then(response => {
-                dispatch(LaunchHistoryReceivedAction(response))
-            })
+        getAllHistory().then(response => {
+            dispatch(LaunchHistoryReceivedAction(response))
+        })
             .catch(err => console.log(err))
     }
 }
