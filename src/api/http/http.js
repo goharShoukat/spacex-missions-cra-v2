@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: process.env.REACT_SPACEX_API_ENV_VAR,
+    baseURL: process.env.REACT_APP_SPACEX_API,
     responseType: 'json'
 })
 
