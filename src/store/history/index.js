@@ -1,4 +1,4 @@
-import { getAllHistory } from '../../api/http'
+import { getAllHistory } from '../../api'
 
 const LAUNCH_HISTORY_REQUESTED = 'LAUNCH_HISTORY_REQUESTED'
 const LAUNCH_HISTORY_RECEIVED = 'LAUNCH_HISTORY_RECEIVED'
@@ -41,9 +41,9 @@ export default function HistoryReducer(state = initialState, action) {
 export const fetchAllHistoryData = () => {
     return function (dispatch) {
         dispatch(LaunchHistoryRequestAction)
-        getAllHistory().then(response => {
+        getAllHistory().then(response => 
             dispatch(LaunchHistoryReceivedAction(response))
-        })
+        )
             .catch(err => console.log(err))
     }
 }
