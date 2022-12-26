@@ -10,7 +10,7 @@
             "es2017"
         ],
         "sourceMap": true,
-        "allowJs": false,
+        "allowJs": true,
         "jsx": "react",
         "declaration": true,
         "moduleResolution": "node",
@@ -21,10 +21,13 @@
         "strictNullChecks": true,
         "suppressImplicitAnyIndexErrors": true,
         "noUnusedLocals": true,
-        "noUnusedParameters": true
+        "noUnusedParameters": true,
+        "allowSyntheticDefaultImports": true,
     },
+
     "include": [
-        "src"
+        "src",
+        "index.d.ts",   // declaration file path
     ],
     "exclude": [
         "node_modules",

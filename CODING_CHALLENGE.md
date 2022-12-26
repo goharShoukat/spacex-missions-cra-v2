@@ -19,4 +19,5 @@ Setup primitive compisitions for history and launches, and hook them to the rout
  Display data from the SpaceX history endpoint
   - Setup history store 
   - Create historycard component
-  - Display response on /history page
+  - Display response on /history page by dispatching action to retrieve history data and set on store
+  - Typescript support for react app

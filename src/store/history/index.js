@@ -1,4 +1,4 @@
-import { getAllHistory } from '../../api'
+import { getAllHistory } from '../../api/http'
 
 const LAUNCH_HISTORY_REQUESTED = 'LAUNCH_HISTORY_REQUESTED'
 const LAUNCH_HISTORY_RECEIVED = 'LAUNCH_HISTORY_RECEIVED'
@@ -7,10 +7,10 @@ export const LaunchHistoryRequestAction = {
     type: LAUNCH_HISTORY_REQUESTED,
 }
 
-export const LaunchHistoryReceivedAction = (payload) => {
+export const LaunchHistoryReceivedAction = (launchHistory) => {
     return {
         type: LAUNCH_HISTORY_RECEIVED,
-        launches: payload
+        payload: launchHistory
     }
 }
 
