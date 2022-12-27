@@ -1,10 +1,9 @@
-import axios from 'axios'
-import { axiosInstance } from './'
+ import { axiosInstance, LaunchesResponse } from '.'
 
 const history = '/history'
 const launches = '/launches'
 export const getAllHistory = () => 
     axiosInstance.get(history)
 
-export const getAllLaunches = () => 
+export const getAllLaunches = (): Promise<LaunchesResponse> => 
     axiosInstance.get(launches)

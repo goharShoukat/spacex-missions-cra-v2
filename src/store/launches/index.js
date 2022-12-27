@@ -21,12 +21,12 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case LaunchesRequestAction:
+        case LAUNCHES_REQUESTED:
             return {
                 ...state,
                 loading: true
             }
-        case LaunchesReceivedAction:
+        case LAUNCHES_RECEIVED:
             return {
                 ...state,
                 loading: false,
