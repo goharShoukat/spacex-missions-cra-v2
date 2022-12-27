@@ -1,7 +1,10 @@
 import React from 'react'
-import { Typography, CardContent, CardActions } from '@mui/material'
+import { Typography, CardContent, CardActions,
+Table, TableBody, TableCell, TableRow } from '@mui/material'
 import { Button } from '../'
-import { StyledLaunchCard, StyledLaunchCardActionArea, LaunchCardProperties } from '.'
+import { SecondStagePayloads } from '../../api'
+import { StyledLaunchCard, StyledLaunchCardActionArea, LaunchCardProperties,
+StyledTableContainer, StyledTableHead } from '.'
 
 export const LaunchCard = ({
     missionName,
@@ -24,6 +27,37 @@ export const LaunchCard = ({
                     <Typography gutterBottom variant='h5'>
                         Launch Number: {launchNumber}
                     </Typography>
+                    <Typography gutterBottom variant='h6'>
+                        Payloads
+                    </Typography>
+                    <StyledTableContainer>
+                        <Table>
+                            <StyledTableHead>
+                                <TableRow>
+                                    <TableCell>Manufacturer</TableCell>
+                                    <TableCell>Nationality</TableCell>
+                                    <TableCell>Payload Type</TableCell>
+                                </TableRow>
+                            </StyledTableHead>
+                            <TableBody>
+                                {payloads?.map((payload:SecondStagePayloads, index) => {
+                                    return (
+                                        <TableRow key={index}>
+                                            <TableCell component="th" scope="row">
+                                                {payload.manufacturer}
+                                            </TableCell>
+                                            <TableCell>
+                                                {payload.nationality}
+                                            </TableCell>
+                                            <TableCell>
+                                                {payload.payload_type}
+                                            </TableCell>
+                                        </TableRow>
+                                    )
+                                })}
+                            </TableBody>
+                        </Table>
+                    </StyledTableContainer>
                     {details && <Typography>
                         {details}
                     </Typography>}
