@@ -1,3 +1,3 @@
-export * from './enpoints.types'
+export * from './endpoints.types'
 export * from './http'
 export * from './endpoints'

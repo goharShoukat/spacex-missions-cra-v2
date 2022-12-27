@@ -7,7 +7,6 @@ export const StyledHistoryCard = styled(Card)`
 background-color: ${colors.darkGray};
 justify-content: space-betwee;
 align-items: center;
-width: 100%;
 padding: ${SMALL_SPACING};
 margin: ${SPACING};
 border-radius: ${BORDER_RADIUS};
