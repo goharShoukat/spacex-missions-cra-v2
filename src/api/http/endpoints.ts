@@ -9,5 +9,5 @@ export const getAllHistory = () =>
 export const getAllLaunches = (): Promise<LaunchesResponse> => 
     axiosInstance.get(launches)
 
-export const getAllRockets = (): Promise<RocketsResponse> => 
+export const getAllRockets = () => 
     axiosInstance.get(rockets)

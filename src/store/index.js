@@ -3,9 +3,11 @@ import {createStore, applyMiddleware, combineReducers} from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import  historyReducer from './history'
 import launchesReducer from './launches'
+import rocketsReducer from './rockets'
 const rootReducer = combineReducers({
     history: historyReducer,
-    launches: launchesReducer
+    launches: launchesReducer, 
+    rockets: rocketsReducer,
 })
 
 const storeEnhancer = composeWithDevTools(applyMiddleware(thunk))

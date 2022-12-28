@@ -12,19 +12,24 @@ import {
 
 import { Button } from '../../components'
 import { fetchAllLaunchesData } from '../../store/launches'
+import { fetchAllRocketsData } from '../../store/rockets'
 import  Typography  from '@mui/material/Typography'
 import { LaunchCard } from '../../components'
 
 const Launches = () => {
     const launches = useSelector((state) => state.launches.launches)
+    const rockets = useSelector((state) => state.rockets.rockets)
+
     const [searchTerm, setSearchTerm] = useState('')
     const [filterDate, setFilterDate] = useState(null)
 
-    //console.log(launches)
+    console.log(rockets)
+    console.log(launches)
     const dispatch = useDispatch()
     useEffect(() => {
+        dispatch(fetchAllRocketsData())
         dispatch(fetchAllLaunchesData())
-    }, [dispatch])
+    })
 
     const handleSearchTermChange = (e) => {
         setSearchTerm(e.target.value)
@@ -32,6 +37,9 @@ const Launches = () => {
 
     const handleDateChange = (e) => {
         setFilterDate(e.target.value)
+    }
+    if (rockets === null && !Array.isArray(rockets)){
+        <Typography>Loading...</Typography>
     }
 
     if (launches === null && !Array.isArray(launches)) {
