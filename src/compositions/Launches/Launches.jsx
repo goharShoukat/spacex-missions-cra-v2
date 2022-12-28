@@ -78,6 +78,11 @@ const Launches = () => {
                     if (searchTerm && !missionNameLowerCase.includes(searchTermToLowerCase)){
                         return
                     }
+
+                    const selectedDate = new Date(filterDate ?? '').toString().slice(0, 15)
+                    if (filterDate && launchDate !== selectedDate){
+                        return
+                    }
                     return (
                         <LaunchCard
                             key={index}
