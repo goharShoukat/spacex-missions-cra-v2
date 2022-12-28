@@ -1,32 +1,33 @@
 import { getAllRockets } from '../../api'
 
-const LAUNCHES_REQUESTED = 'LAUNCHES_REQUESTED'
-const LAUNCHES_RECEIVED = 'LAUNCHES_RECEIVED'
+const ROCKETS_REQUESTED = 'ROCKETS_REQUESTED'
+const ROCKETS_RECEIVED = 'ROCKETS_RECEIVED'
 
-export const LaunchesRequestAction = {
-    type: LAUNCHES_REQUESTED,
+export const RocketsRequestAction = {
+    type: ROCKETS_REQUESTED,
 }
 
-export const LaunchesReceivedAction = (launches) => {
+export const RocketsReceivedAction = (launches) => {
     return {
-        type: LAUNCHES_RECEIVED,
+        type: ROCKETS_RECEIVED,
         payload: launches
     }
 }
 
 const initialState = {
     loading: false,
-    rockets: null
+    rockets: null,
+
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case LAUNCHES_REQUESTED:
+        case ROCKETS_REQUESTED:
             return {
                 ...state,
                 loading: true
             }
-        case LAUNCHES_RECEIVED:
+        case ROCKETS_RECEIVED:
             return {
                 ...state,
                 loading: false,
@@ -41,10 +42,10 @@ export default reducer
 
 export const fetchAllRocketsData = () => {
     return function (dispatch) {
-        dispatch(LaunchesRequestAction)
+        dispatch(RocketsRequestAction)
         getAllRockets()
             .then(response =>
-                dispatch(LaunchesReceivedAction(response)))
+                dispatch(RocketsReceivedAction(response)))
             .catch(err => console.log(err))
     }
 }

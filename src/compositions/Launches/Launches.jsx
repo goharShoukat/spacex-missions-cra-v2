@@ -24,12 +24,12 @@ const Launches = () => {
     const [filterDate, setFilterDate] = useState(null)
 
     console.log(rockets)
-    console.log(launches)
+    //console.log(launches)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchAllRocketsData())
         dispatch(fetchAllLaunchesData())
-    })
+    }, [dispatch])
 
     const handleSearchTermChange = (e) => {
         setSearchTerm(e.target.value)
