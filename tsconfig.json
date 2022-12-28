@@ -23,6 +23,8 @@
         "noUnusedLocals": false,
         "noUnusedParameters": false,
         "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+        "incremental": true,
     },
 
     "include": [
