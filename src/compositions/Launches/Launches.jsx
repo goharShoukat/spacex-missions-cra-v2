@@ -23,8 +23,6 @@ const Launches = () => {
     const [searchTerm, setSearchTerm] = useState('')
     const [filterDate, setFilterDate] = useState(null)
 
-    console.log(rockets)
-    //console.log(launches)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchAllRocketsData())

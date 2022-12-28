@@ -17,6 +17,7 @@ export const RocketsReceivedAction = (launches) => {
 const initialState = {
     loading: false,
     rockets: null,
+    payloadWeights: null
 
 }
 
@@ -28,10 +29,18 @@ const reducer = (state = initialState, action) => {
                 loading: true
             }
         case ROCKETS_RECEIVED:
+            const rocketPayloads = []
+            action.payload.map(rocket => {
+                const { payload_weights, rocket_id } = rocket
+                payload_weights.map(payload => {
+                    rocketPayloads.push({...payload, rocket_id})
+                })
+            })
             return {
                 ...state,
                 loading: false,
-                rockets: action.payload
+                rockets: action.payload,
+                payloadWeights: rocketPayloads
             }
         default:
             return state
