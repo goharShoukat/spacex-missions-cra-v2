@@ -31,3 +31,13 @@ Setup primitive compisitions for history and launches, and hook them to the rout
     - Filter by date
   # Note:
     Significant delay in input and date inputs. Interestingly that goes away when the input and date inputs are used. 
+
+  ## TASK 5
+  Display data by diltering with orbit id
+   - Setup endpoints and store related to rockets and payloads
+   - Enhance launches composition to fetch rockets related data component
+   - Display all possible orbitId and rocket classes as filterable options via buttons
+   - Create useState for holding various orbit related data for filtering 
+   - Create a clear all filters button
+   - Adjust Buttons component to accept onClick command
+   - Adjust styling to make small buttons appear row wise, instead of column wise
