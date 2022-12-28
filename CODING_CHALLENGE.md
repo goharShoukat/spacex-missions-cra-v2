@@ -27,3 +27,7 @@ Setup primitive compisitions for history and launches, and hook them to the rout
     - Setup launches store
     - Create LaunchCard component
     - Display launch response on /launch page by dispatching action to retrieve launch data and set on store
+    - Filter by search term
+    - Filter by date
+  # Note:
+    Significant delay in input and date inputs. Interestingly that goes away when the input and date inputs are used. 
