@@ -1,31 +1,31 @@
 import React from 'react';
 import { StyledPrimaryButton, StyledSecondaryButton, StyledSmallButton } from './'
 
-export const Button = (props) => {
-    if (props.buttonStyle === 'primary') {
+export const Button = ({buttonStyle, label, href, size, ...otherProperties}) => {
+    if (buttonStyle === 'primary') {
         return (
             <div>
-                <StyledPrimaryButton href={props.href}>
-                    {props.label}
+                <StyledPrimaryButton href={href} {...otherProperties} >
+                    {label}
                 </StyledPrimaryButton>
             </div>
         )
     }
-    else if (props.buttonStyle === 'secondary') {
+    else if (buttonStyle === 'secondary') {
         return (
             <div>
-                <StyledSecondaryButton href={props.href}>
-                    {props.label}
+                <StyledSecondaryButton href={href} {...otherProperties} >
+                    {label}
                 </StyledSecondaryButton>
             </div>
         )
     }
 
-    else if (props.size === 'small') {
+    else if (size === 'small') {
         return (
             <div>
-                <StyledSmallButton href={props.href}>
-                    {props.label}
+                <StyledSmallButton href={href} {...otherProperties} >
+                    {label}
                 </StyledSmallButton>
             </div>
         )

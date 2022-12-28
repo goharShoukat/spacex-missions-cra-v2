@@ -7,19 +7,24 @@ import {
     StyledFilterSection,
     StyledInputContainer,
     StyledFilterByMissionInput,
-    StyledFormLabel
+    StyledFormLabel,
+    StyledPayloadFilterSection,
+    FormLabelText
 } from './Launches.styled'
 
 import { Button } from '../../components'
 import { fetchAllLaunchesData } from '../../store/launches'
 import { fetchAllRocketsData } from '../../store/rockets'
-import  Typography  from '@mui/material/Typography'
+import Typography from '@mui/material/Typography'
 import { LaunchCard } from '../../components'
 
 const Launches = () => {
     const launches = useSelector((state) => state.launches.launches)
     const rockets = useSelector((state) => state.rockets.rockets)
+    const payloadsWeights = useSelector((state) => state.rockets.payloadWeights)
 
+    const [payloadOption, setPayloadOption] = useState('')
+    const [payloadOrbitId, setPayloadOrbitId] = useState('')
     const [searchTerm, setSearchTerm] = useState('')
     const [filterDate, setFilterDate] = useState(null)
 
@@ -36,7 +41,23 @@ const Launches = () => {
     const handleDateChange = (e) => {
         setFilterDate(e.target.value)
     }
-    if (rockets === null && !Array.isArray(rockets)){
+
+    const handlePayloadOptionChange = (payloadWeight) => {
+        const { id, name, kg, lb, rocket_id } = payloadWeight
+        const capitalisedRocketName = rocket_id.charAt(0).toUpperCase() + rocket_id.slice(1)
+        const label = `${capitalisedRocketName}: ${name} (${id}) - ${kg}kg / ${lb}lb`
+        setPayloadOption(label)
+        setPayloadOrbitId(payloadWeight.id)
+    }
+
+    const handleClearFilters = () => {
+        setSearchTerm('')
+        setFilterDate(null)
+        setPayloadOption('')
+        setPayloadOrbitId('')
+    }
+
+    if (rockets === null && !Array.isArray(rockets)) {
         <Typography>Loading...</Typography>
     }
 
@@ -51,8 +72,9 @@ const Launches = () => {
     return (
         <>
             <StyledLaunchesMainImageContainer>
-                <img src={logo} alt='logo' />
+                <img src={logo} alt="logo" />
             </StyledLaunchesMainImageContainer>
+            <Button buttonStyle="secondary" label="History" href="/history" />
             <StyledFilterSection>
                 <StyledInputContainer>
                     <StyledFormLabel>Filter by mission</StyledFormLabel>
@@ -63,7 +85,58 @@ const Launches = () => {
                     <StyledFilterByMissionInput type="date" onChange={handleDateChange} />
                 </StyledInputContainer>
             </StyledFilterSection>
-            <Button label='History' href='/history' buttonStyle='secondary' />
+            <StyledFilterSection>
+                <StyledFormLabel>{payloadOption}</StyledFormLabel>
+                <Button size="small" label="Clear filters" onClick={() => handleClearFilters()} />
+            </StyledFilterSection>
+            <FormLabelText>
+                <StyledFormLabel>Filter by Low Earth Orbit</StyledFormLabel>
+            </FormLabelText>
+            <StyledPayloadFilterSection>
+                <br />
+                <br />
+                <br />
+                {payloadsWeights?.filter(payload => payload.id === 'leo').map((payload, index) => {
+                    const label = `${payload.kg}kg / ${payload.lb}lb`
+                    return <Button size="small" key={index} label={label} onClick={() => handlePayloadOptionChange(payload)} />
+                })}
+            </StyledPayloadFilterSection>
+            <FormLabelText>
+                <StyledFormLabel>Filter by Geosynchronous Transfer Orbit</StyledFormLabel>
+            </FormLabelText>
+            <StyledPayloadFilterSection>
+                <br />
+                <br />
+
+                {payloadsWeights?.filter(payload => payload.id === 'gto').map((payload, index) => {
+                    const label = `${payload.kg}kg / ${payload.lb}lb`
+                    return <Button size="small" key={index} label={label} onClick={() => handlePayloadOptionChange(payload)} />
+                })}
+            </StyledPayloadFilterSection>
+            <FormLabelText>
+                <StyledFormLabel>Filter by Mars Orbit</StyledFormLabel>
+            </FormLabelText>
+            <StyledPayloadFilterSection>
+                <br />
+                <br />
+    
+                {payloadsWeights?.filter(payload => payload.id === 'mars').map((payload, index) => {
+                    const label = `${payload.kg}kg / ${payload.lb}lb`
+                    return <Button size="small" key={index} label={label} onClick={() => handlePayloadOptionChange(payload)} />
+                })}
+            </StyledPayloadFilterSection>
+            <FormLabelText>
+                <StyledFormLabel>Filter by Moon Orbit</StyledFormLabel>
+            </FormLabelText>
+            <StyledPayloadFilterSection>
+                <br />
+                <br />
+                {payloadsWeights?.filter(payload => payload.id === 'moon').map((payload, index) => {
+                    const label = `${payload.kg}kg / ${payload.lb}lb`
+                    return <Button size="small" key={index} label={label} onClick={() => handlePayloadOptionChange(payload)} />
+                })}
+            </StyledPayloadFilterSection>
+
             {
                 launches.map((launch, index) => {
                     const {
@@ -78,17 +151,27 @@ const Launches = () => {
 
                     const { payloads } = second_stage
                     const launchDate = new Date(launch_date_utc).toString().slice(0, 15)
-                    
+
                     const missionNameLowerCase = mission_name.toLowerCase()
                     let searchTermToLowerCase = searchTerm.toLowerCase()
-                    if (searchTerm && !missionNameLowerCase.includes(searchTermToLowerCase)){
+
+                    //filter by mission name
+                    if (searchTerm && !missionNameLowerCase.includes(searchTermToLowerCase)) {
                         return
                     }
 
+                    //filter by date
                     const selectedDate = new Date(filterDate ?? '').toString().slice(0, 15)
-                    if (filterDate && launchDate !== selectedDate){
+                    if (filterDate && launchDate !== selectedDate) {
                         return
                     }
+
+                    //filter by orbit id 
+                    const rocketOrbitId = payloads[0].orbit.toLowerCase()
+                    if (payloadOrbitId && rocketOrbitId !== payloadOrbitId) {
+                        return
+                    }
+
                     return (
                         <LaunchCard
                             key={index}
