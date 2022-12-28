@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledPrimaryButton, StyledSecondaryButton, StyledSmallButton } from './'
 
-export const Button = ({buttonStyle, label, href, size, ...otherProperties}) => {
+export const Button = ({label, href,buttonStyle='',  size='medium', ...otherProperties}) => {
     if (buttonStyle === 'primary') {
         return (
             <div>

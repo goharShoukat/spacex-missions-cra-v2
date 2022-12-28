@@ -1,7 +1,6 @@
 import React from 'react'
 import ThemeProvider from './ThemeWrapper'
-import logo from './assets/logo.jpg'
-import { Button, Header } from './components'
+
 import { Provider } from 'react-redux'
 import store from './store'
 

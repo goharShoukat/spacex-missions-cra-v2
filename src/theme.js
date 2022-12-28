@@ -1,4 +1,3 @@
-import React from 'react'
 import { createTheme} from '@mui/material/styles'
 
 export const BORDER_RADIUS = '0.2rem'
